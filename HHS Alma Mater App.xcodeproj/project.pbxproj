@@ -14,6 +14,7 @@
 		F2F1B61527568D5B004FF42A /* HHS_Alma_Mater_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F2F1B61327568D5B004FF42A /* HHS_Alma_Mater_App.xcdatamodeld */; };
 		F2F1B61727568D5E004FF42A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2F1B61627568D5E004FF42A /* Assets.xcassets */; };
 		F2F1B61A27568D5E004FF42A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2F1B61827568D5E004FF42A /* LaunchScreen.storyboard */; };
+		F2F1B62227568FB5004FF42A /* ForTheFirstTimeInForever.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F2F1B62127568FB5004FF42A /* ForTheFirstTimeInForever.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		F2F1B61627568D5E004FF42A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2F1B61927568D5E004FF42A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F2F1B61B27568D5E004FF42A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2F1B62127568FB5004FF42A /* ForTheFirstTimeInForever.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ForTheFirstTimeInForever.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				F2F1B60E27568D5B004FF42A /* ViewController.swift */,
 				F2F1B61027568D5B004FF42A /* Main.storyboard */,
 				F2F1B61627568D5E004FF42A /* Assets.xcassets */,
+				F2F1B62127568FB5004FF42A /* ForTheFirstTimeInForever.mp3 */,
 				F2F1B61827568D5E004FF42A /* LaunchScreen.storyboard */,
 				F2F1B61B27568D5E004FF42A /* Info.plist */,
 				F2F1B61327568D5B004FF42A /* HHS_Alma_Mater_App.xcdatamodeld */,
@@ -129,6 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2F1B61A27568D5E004FF42A /* LaunchScreen.storyboard in Resources */,
+				F2F1B62227568FB5004FF42A /* ForTheFirstTimeInForever.mp3 in Resources */,
 				F2F1B61727568D5E004FF42A /* Assets.xcassets in Resources */,
 				F2F1B61227568D5B004FF42A /* Main.storyboard in Resources */,
 			);
