@@ -12,6 +12,10 @@ import AVFoundation
 class ViewController: UIViewController, AVSpeechSynthesizerDelegate
 {
     
+    @IBOutlet weak var infoButton: UIButton!
+    
+    @IBOutlet weak var lyricButton: UIButton!
+    
     @IBOutlet weak var backgroundImageView: UIImageView!
     
     @IBOutlet weak var playButton: UIButton!
@@ -39,14 +43,25 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
     
     override func viewDidLoad()
     {
+        
         super.viewDidLoad()
+
        
         self.view.sendSubviewToBack(backgroundImageView)
         
-        backgroundImageView.image = UIImage(named: "background")
+        backgroundImageView.image = UIImage(named: "background2")
         
         playButton.setImage(UIImage(systemName: "play.fill"), for: UIControl.State.normal)
 
+        self.view.backgroundColor = #colorLiteral(red: 0.8233039975, green: 0, blue: 0.1372188032, alpha: 1)
+        oldLyricsLbl.textColor = UIColor.white
+        currentLyricsLbl.textColor = UIColor.yellow
+        nextLyricsLbl.textColor = UIColor.white
+        
+        infoButton.tintColor = UIColor.systemYellow
+        lyricButton.tintColor = UIColor.systemYellow
+        
+    
         oldLyricsLbl.text = ""
         currentLyricsLbl.text = "Press play!"
         currentLyricsLbl.textAlignment = .center
@@ -61,6 +76,11 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
 //        lyrics.append("iiiiiiiiiiii")
 //        lyrics.append("beep boop bop")
 //        lyrics.append("hello hello hello hello")
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
     }
     
     func appendLyricsToArray()

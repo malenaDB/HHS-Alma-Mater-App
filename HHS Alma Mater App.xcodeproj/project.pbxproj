@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F21040F5276A5C3200379081 /* InfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21040F4276A5C3200379081 /* InfoVC.swift */; };
+		F2B0E6C62769076C00E7587A /* FullLyricsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B0E6C52769076C00E7587A /* FullLyricsVC.swift */; };
 		F2F1B60B27568D5B004FF42A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F1B60A27568D5B004FF42A /* AppDelegate.swift */; };
 		F2F1B60D27568D5B004FF42A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F1B60C27568D5B004FF42A /* SceneDelegate.swift */; };
 		F2F1B60F27568D5B004FF42A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F1B60E27568D5B004FF42A /* ViewController.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F21040F4276A5C3200379081 /* InfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoVC.swift; sourceTree = "<group>"; };
+		F2B0E6C52769076C00E7587A /* FullLyricsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullLyricsVC.swift; sourceTree = "<group>"; };
 		F2F1B60727568D5B004FF42A /* HHS Alma Mater App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HHS Alma Mater App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2F1B60A27568D5B004FF42A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2F1B60C27568D5B004FF42A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +68,8 @@
 				F2F1B60C27568D5B004FF42A /* SceneDelegate.swift */,
 				F2F1B60E27568D5B004FF42A /* ViewController.swift */,
 				F2F1B61027568D5B004FF42A /* Main.storyboard */,
+				F21040F4276A5C3200379081 /* InfoVC.swift */,
+				F2B0E6C52769076C00E7587A /* FullLyricsVC.swift */,
 				F2F1B61627568D5E004FF42A /* Assets.xcassets */,
 				F2F1B62127568FB5004FF42A /* ForTheFirstTimeInForever.mp3 */,
 				F2F1B61827568D5E004FF42A /* LaunchScreen.storyboard */,
@@ -147,7 +153,9 @@
 			files = (
 				F2F1B61527568D5B004FF42A /* HHS_Alma_Mater_App.xcdatamodeld in Sources */,
 				F2F1B60F27568D5B004FF42A /* ViewController.swift in Sources */,
+				F2B0E6C62769076C00E7587A /* FullLyricsVC.swift in Sources */,
 				F2F1B60B27568D5B004FF42A /* AppDelegate.swift in Sources */,
+				F21040F5276A5C3200379081 /* InfoVC.swift in Sources */,
 				F2F1B60D27568D5B004FF42A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
