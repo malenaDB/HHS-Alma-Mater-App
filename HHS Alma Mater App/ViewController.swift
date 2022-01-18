@@ -49,13 +49,13 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
        
         self.view.sendSubviewToBack(backgroundImageView)
         
-        backgroundImageView.image = UIImage(named: "background2")
+    //    backgroundImageView.image = UIImage(named: "background2")
         
-        playButton.setImage(UIImage(systemName: "play.fill"), for: UIControl.State.normal)
+        playButton.setImage(UIImage(named: "playButtonYellow"), for: UIControl.State.normal)
 
-        self.view.backgroundColor = #colorLiteral(red: 0.8233039975, green: 0, blue: 0.1372188032, alpha: 1)
+        self.view.backgroundColor = #colorLiteral(red: 0.7568627451, green: 0.1529411765, blue: 0.1764705882, alpha: 1)
         oldLyricsLbl.textColor = UIColor.white
-        currentLyricsLbl.textColor = UIColor.yellow
+        currentLyricsLbl.textColor = UIColor.systemYellow
         nextLyricsLbl.textColor = UIColor.white
         
         infoButton.tintColor = UIColor.systemYellow
@@ -68,15 +68,7 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
         nextLyricsLbl.text = ""
         
         appendLyricsToArray()
-//        lyrics.append("fdsafsfd")
-//        lyrics.append("fjdlfjkdlja")
-//        lyrics.append("ssssssssss")
-//        lyrics.append("mmlmlmlmlmfkdls")
-//        lyrics.append("aaaajjaajja")
-//        lyrics.append("iiiiiiiiiiii")
-//        lyrics.append("beep boop bop")
-//        lyrics.append("hello hello hello hello")
-        
+
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
@@ -87,17 +79,25 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
     {
         lyrics.append("")
         lyrics.append("")
-        lyrics.append("For the first time in forever")
-        lyrics.append("There'll be music, there'll be light")
-        lyrics.append("For the first time in forever")
-        lyrics.append("I'll be dancing through the night")
+        lyrics.append("Haverford High, thy praise we’ll ever sing.")
+        lyrics.append("Long shall thy fame in florid accents ring.")
+        lyrics.append("Pinioned in splendor, may our banners soar.")
+        lyrics.append("Crimson and Gold, triumphant evermore.")
+        lyrics.append("Soon, all too soon, our school day joys are gone.")
+        lyrics.append("Then, with radiance of the breaking dawn,")
+        lyrics.append("Ascends our love in loyalty to thee,")
+        lyrics.append("And memory hold us eternally.")
+        lyrics.append("Students arise, shout now with wild acclaim;")
+        lyrics.append("Join in the song to the Alma Mater’s name.")
+        lyrics.append("Let not one foe among her ranks be known.")
+        lyrics.append("Fealty and love will ever bring us home.")
     }
     
     
     func playSong()
     {
         // play song
-        let path = Bundle.main.path(forResource: "ForTheFirstTimeInForever.mp3", ofType: nil)!
+        let path = Bundle.main.path(forResource: "Alma Mater Audio mp3.mp3", ofType: nil)!
         let url = URL(fileURLWithPath: path)
         do
         {
@@ -139,70 +139,64 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
             resetTimer()
         }
             
-        else if timerTotal == 5
+        else if timerTotal == 8
         {
             print(timerTotal)
             setLabelsWithLyrics()
         }
-        else if timerTotal == 9
+        else if timerTotal == 16
         {
             print(timerTotal)
             setLabelsWithLyrics()
         }
-        else if timerTotal == 14
+        else if timerTotal == 24
         {
             print(timerTotal)
             setLabelsWithLyrics()
         }
         
-//        else if timerTotal == 14
-//        {
-//            print(timerTotal)
-//            setLabelsWithLyrics()
-//        }
-//        else if timerTotal == 10
-//        {
-//            print(timerTotal)
-//            setLabelsWithLyrics()
-//        }
-//        else if timerTotal == 12
-//        {
-//            print(timerTotal)
-//            setLabelsWithLyrics()
-//        }
-//        else if timerTotal == 14
-//        {
-//            print(timerTotal)
-//            setLabelsWithLyrics()
-//        }
-//        else if timerTotal == 16
-//        {
-//            print(timerTotal)
-//            setLabelsWithLyrics()
-//        }
-//        else if timerTotal == 18
-//        {
-//            print(timerTotal)
-//            setLabelsWithLyrics()
-//        }
-//        else if timerTotal == 20
-//        {
-//            print(timerTotal)
-//            setLabelsWithLyrics()
-//        }
-//        else if timerTotal == 21
-//        {
-//            print(timerTotal)
-//            setLabelsWithLyrics()
-//        }
-//        else if timerTotal == 22
-//        {
-//            print(timerTotal)
-//            setLabelsWithLyrics()
-//        }
-//
+        else if timerTotal == 32
+        {
+            print(timerTotal)
+            setLabelsWithLyrics()
+        }
+        else if timerTotal == 40
+        {
+            print(timerTotal)
+            setLabelsWithLyrics()
+        }
+        else if timerTotal == 48
+        {
+            print(timerTotal)
+            setLabelsWithLyrics()
+        }
+        else if timerTotal == 56
+        {
+            print(timerTotal)
+            setLabelsWithLyrics()
+        }
+        else if timerTotal == 65
+        {
+            print(timerTotal)
+            setLabelsWithLyrics()
+        }
+        else if timerTotal == 71
+        {
+            print(timerTotal)
+            setLabelsWithLyrics()
+        }
+        else if timerTotal == 80 //
+        {
+            print(timerTotal)
+            setLabelsWithLyrics()
+        }
+        else if timerTotal == 88
+        {
+            print(timerTotal)
+            setLabelsWithLyrics()
+        }
             
-        else if timerTotal > 24
+        else if timerTotal > 97
         {
             print("24 seconds")
             resetTimer()
@@ -222,7 +216,7 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
         
         if playTappedCount == 1
         {
-            playButton.setImage(UIImage(systemName: "pause.fill"), for: UIControl.State.normal)
+            playButton.setImage(UIImage(named: "pauseButtonYellow"), for: UIControl.State.normal)
                 
             setLabelsWithLyrics()
             playSong()
@@ -238,7 +232,9 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
             
         else if playTappedCount % 2 == 0
         {
-            playButton.setImage(UIImage(systemName: "play.fill"), for: UIControl.State.normal)
+            playButton.setImage(UIImage(named: "playButtonYellow"), for: UIControl.State.normal)
+            
+          //  UIImage(named: "background2")
             
             setLabelsWithLyrics()
             
@@ -255,7 +251,7 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
         }
         else if playTappedCount % 2 != 0
         {
-             playButton.setImage(UIImage(systemName: "pause.fill"), for: UIControl.State.normal)
+             playButton.setImage(UIImage(named: "pauseButtonYellow"), for: UIControl.State.normal)
             
             if playTappedCount != 1
             {
