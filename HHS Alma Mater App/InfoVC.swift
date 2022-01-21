@@ -21,6 +21,7 @@ class InfoVC: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.view.backgroundColor = #colorLiteral(red: 0.7568627451, green: 0.1529411765, blue: 0.1764705882, alpha: 1)
         
         infoTextView.textColor = UIColor.systemYellow
         infoTextView.backgroundColor = UIColor.clear

@@ -26,6 +26,8 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
     
     @IBOutlet weak var nextLyricsLbl: UILabel!
     
+    
+    
     var fullRoundComplete = Bool()
     
     var lyrics = [String]()
@@ -40,6 +42,8 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
     var player: AVAudioPlayer?
     
     var playTappedCount = Int()
+    
+    var selectedInfoTextSize = Float()
     
     override func viewDidLoad()
     {
@@ -334,5 +338,17 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
             nextLyricsLbl.text = ""
         }
     }
+    
+    
+    @IBAction func textSizeSliderSlid(_ sender: UISlider)
+    {
+        selectedInfoTextSize = Float(sender.value)
+        
+        oldLyricsLbl.font = oldLyricsLbl.font?.withSize(CGFloat(selectedInfoTextSize))
+        currentLyricsLbl.font = currentLyricsLbl.font?.withSize(CGFloat(selectedInfoTextSize))
+        nextLyricsLbl.font = nextLyricsLbl.font?.withSize(CGFloat(selectedInfoTextSize))
+    }
+    
+    
     
 }
