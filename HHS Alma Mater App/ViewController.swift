@@ -119,7 +119,7 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
     func resetTimer()
     {
         playTappedCount += 1
-        playButton.setImage(UIImage(systemName: "play.fill"), for: UIControl.State.normal)
+        playButton.setImage(UIImage(systemName: "playButtonYellow"), for: UIControl.State.normal)
         
         timer.invalidate()
         timerTotal = 0
