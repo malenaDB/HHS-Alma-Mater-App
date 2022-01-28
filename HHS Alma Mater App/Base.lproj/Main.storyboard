@@ -64,10 +64,27 @@
                                         <rect key="frame" x="0.0" y="513" width="335" height="50"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bcl-8V-OyY">
-                                                <rect key="frame" x="0.0" y="0.0" width="142.5" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="107.5" height="50"/>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wah-xf-9LY">
-                                                <rect key="frame" x="142.5" y="0.0" width="50" height="50"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFL-Sq-vEP">
+                                                <rect key="frame" x="107.5" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="F0d-Zy-gB3"/>
+                                                    <constraint firstAttribute="height" constant="50" id="nhq-zb-bJa"/>
+                                                </constraints>
+                                                <state key="normal" title="Button" image="resetButtonYellow"/>
+                                                <connections>
+                                                    <action selector="resetButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9BO-A5-RjY"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YdX-EJ-RMT">
+                                                <rect key="frame" x="157.5" y="0.0" width="20" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="Mdg-yI-j2P"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wah-xf-9LY">
+                                                <rect key="frame" x="177.5" y="0.0" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="2I3-YC-Pmh"/>
                                                     <constraint firstAttribute="width" constant="50" id="uYP-6n-Ohp"/>
@@ -79,7 +96,7 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tWW-fh-Z2I">
-                                                <rect key="frame" x="192.5" y="0.0" width="142.5" height="50"/>
+                                                <rect key="frame" x="227.5" y="0.0" width="107.5" height="50"/>
                                             </view>
                                         </subviews>
                                         <constraints>
@@ -176,6 +193,7 @@
                         <outlet property="nextLyricsLbl" destination="ltb-tO-btU" id="YnG-DR-vyW"/>
                         <outlet property="oldLyricsLbl" destination="B2r-4T-qr4" id="EaS-Zw-Je0"/>
                         <outlet property="playButton" destination="wah-xf-9LY" id="f4N-W5-lDo"/>
+                        <outlet property="resetButton" destination="aFL-Sq-vEP" id="jYF-J6-8Tl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -530,6 +548,7 @@ Fealty and love will ever bring us home.</string>
         <image name="fullLyricsBackgroundTop" width="750" height="547"/>
         <image name="info.circle" catalog="system" width="64" height="60"/>
         <image name="music.mic" catalog="system" width="64" height="58"/>
+        <image name="resetButtonYellow" width="618" height="618"/>
         <image name="smiley" catalog="system" width="64" height="60"/>
     </resources>
 </document>

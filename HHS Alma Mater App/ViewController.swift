@@ -20,6 +20,8 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
     
     @IBOutlet weak var playButton: UIButton!
     
+    @IBOutlet weak var resetButton: UIButton!
+    
     @IBOutlet weak var oldLyricsLbl: UILabel!
     
     @IBOutlet weak var currentLyricsLbl: UILabel!
@@ -42,6 +44,7 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
     var player: AVAudioPlayer?
     
     var playTappedCount = Int()
+    var resetTappedCount = Int()
     
     var selectedInfoTextSize = Float()
     
@@ -49,14 +52,16 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
     {
         
         super.viewDidLoad()
-
-       
+        
+        
         self.view.sendSubviewToBack(backgroundImageView)
         
-    //    backgroundImageView.image = UIImage(named: "background2")
+        //    backgroundImageView.image = UIImage(named: "background2")
         
         playButton.setImage(UIImage(named: "playButtonYellow"), for: UIControl.State.normal)
-
+        hideResetButton()
+        
+        
         self.view.backgroundColor = #colorLiteral(red: 0.7568627451, green: 0.1529411765, blue: 0.1764705882, alpha: 1)
         oldLyricsLbl.textColor = UIColor.white
         currentLyricsLbl.textColor = UIColor.systemYellow
@@ -65,19 +70,42 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
         infoButton.tintColor = UIColor.systemYellow
         lyricButton.tintColor = UIColor.systemYellow
         
-    
+        
         oldLyricsLbl.text = ""
         currentLyricsLbl.text = "Press play!"
         currentLyricsLbl.textAlignment = .center
         nextLyricsLbl.text = ""
         
         appendLyricsToArray()
-
+        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
     }
+    
+    
+    func initAudioPlayer()
+    {
+        let path = Bundle.main.path(forResource: "Alma Mater Audio mp3.mp3", ofType: nil)!
+        let url = URL(fileURLWithPath: path)
+        do
+        {
+            player = try AVAudioPlayer(contentsOf: url)
+            player?.prepareToPlay()
+        }
+        catch
+        {
+            print("could not load song file :(")
+        }
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        self .initAudioPlayer()
+    }
+    
     
     func appendLyricsToArray()
     {
@@ -98,20 +126,10 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
     }
     
     
+    
     func playSong()
     {
-        // play song
-        let path = Bundle.main.path(forResource: "Alma Mater Audio mp3.mp3", ofType: nil)!
-        let url = URL(fileURLWithPath: path)
-        do
-        {
-            player = try AVAudioPlayer(contentsOf: url)
-            player?.play()
-        }
-        catch
-        {
-            print("could not load song file :(")
-        }
+        player?.play()
     }
     
     
@@ -119,14 +137,14 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
     func resetTimer()
     {
         playTappedCount += 1
-        playButton.setImage(UIImage(systemName: "playButtonYellow"), for: UIControl.State.normal)
+        playButton.setImage(UIImage(named: "playButtonYellow"), for: UIControl.State.normal)
         
         timer.invalidate()
         timerTotal = 0
         
         lyrics.remove(at: 0)
         oldLyricsLbl.text = lyrics.first
-        currentLyricsLbl.text = "THE END"
+        currentLyricsLbl.text = "THE END.  Press the button to replay."
         nextLyricsLbl.text = ""
     }
     
@@ -136,7 +154,8 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
     {
         timerTotal += 1
         
-       // print(timerTotal)
+        // print(timerTotal)
+        
         
         if timerTotal < 0
         {
@@ -158,7 +177,6 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
             print(timerTotal)
             setLabelsWithLyrics()
         }
-        
         else if timerTotal == 32
         {
             print(timerTotal)
@@ -179,17 +197,17 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
             print(timerTotal)
             setLabelsWithLyrics()
         }
-        else if timerTotal == 65
+        else if timerTotal == 64
         {
             print(timerTotal)
             setLabelsWithLyrics()
         }
-        else if timerTotal == 71
+        else if timerTotal == 72
         {
             print(timerTotal)
             setLabelsWithLyrics()
         }
-        else if timerTotal == 80 //
+        else if timerTotal == 83 //
         {
             print(timerTotal)
             setLabelsWithLyrics()
@@ -205,8 +223,9 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
             print("24 seconds")
             resetTimer()
             fullRoundComplete = true
+            
+            playTappedCount = 0
         }
-        
     }
     
     
@@ -214,19 +233,52 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
     @IBAction func playButtonTapped(_ sender: UIButton)
     {
         currentLyricsLbl.textAlignment = .left
-        
+        print(playTappedCount)
         playTappedCount += 1
         print (playTappedCount)
         
-        if playTappedCount == 1
+        
+        if resetTappedCount >= 1
         {
-            playButton.setImage(UIImage(named: "pauseButtonYellow"), for: UIControl.State.normal)
+            if playButton.currentImage == UIImage(named: "pauseButtonYellow")
+            {
+                player?.pause()
                 
+                playButton.setImage(UIImage(named: "playButtonYellow"), for: UIControl.State.normal)
+                
+                timer.invalidate()
+                
+                if fullRoundComplete == true
+                {
+                    appendLyricsToArray()
+                }
+            }
+            else if playButton.currentImage == UIImage(named: "playButtonYellow")
+            {
+                playButton.setImage(UIImage(named: "pauseButtonYellow"), for: UIControl.State.normal)
+                
+                if playTappedCount != 1
+                {
+                    playSong()
+                    
+                    timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(counter), userInfo: nil, repeats: true)
+                }
+            }
+        }
+            
+        else if playTappedCount == 1
+        {
+            showResetButton()
+            
+            playButton.setImage(UIImage(named: "pauseButtonYellow"), for: UIControl.State.normal)
+            
             setLabelsWithLyrics()
             playSong()
             
             timerTotal = 0
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(counter), userInfo: nil, repeats: true)
+            
+            appendLyricsToArray()
             
             if fullRoundComplete == true
             {
@@ -238,15 +290,16 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
         {
             playButton.setImage(UIImage(named: "playButtonYellow"), for: UIControl.State.normal)
             
-          //  UIImage(named: "background2")
+            //  UIImage(named: "background2")
             
-            setLabelsWithLyrics()
+            // setLabelsWithLyrics()
             
             //playSong()
             player?.pause()
-        
+            
             //timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(counter), userInfo: nil, repeats: true)
             timer.invalidate()
+            
             
             if fullRoundComplete == true
             {
@@ -255,31 +308,51 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
         }
         else if playTappedCount % 2 != 0
         {
-             playButton.setImage(UIImage(named: "pauseButtonYellow"), for: UIControl.State.normal)
+            playButton.setImage(UIImage(named: "pauseButtonYellow"), for: UIControl.State.normal)
             
             if playTappedCount != 1
             {
-//                timer.invalidate()
-//                player?.stop()
+                //                timer.invalidate()
+                //                player?.stop()
                 
                 playSong()
+                
                 timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(counter), userInfo: nil, repeats: true)
+                
             }
         }
+    }
+    
+    
+    @IBAction func resetButtonTapped(_ sender: UIButton)
+    {
+        currentLyricsLbl.textAlignment = .left
+        print(resetTappedCount)
+        resetTappedCount += 1
+        print (resetTappedCount)
+        
+        playButton.setImage(UIImage(named: "pauseButtonYellow"), for: UIControl.State.normal)
+        
+        lyrics.removeAll()
+        appendLyricsToArray()
+        setLabelsWithLyrics()
+        
+        player?.stop()
+        initAudioPlayer()
+        player?.play()
+        
+        timer.invalidate()
+        timerTotal = 0
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(counter), userInfo: nil, repeats: true)
         
         
-        
-        
-        
-      //  if playButton.currentImage == UIImage(systemName: "pause.fill")
+        //        if fullRoundComplete == true
         //        {
-        //            playButton.setImage(UIImage(systemName: "play.fill"), for: UIControl.State.normal)
-        //        }
-        //        else if playButton.currentImage == UIImage(systemName: "play.fill")
-        //        {
-        //            playButton.setImage(UIImage(systemName: "pause.fill"), for: UIControl.State.normal)
+        //            appendLyricsToArray()
         //        }
     }
+    
+    
     
     
     
@@ -292,7 +365,14 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
         
         if lyrics.count > 0
         {
+            //            if resetTappedCount > 0 //COME BACK AND FIX THIS!!!
+            //            {
+            //                print("resetTappedCount > 0")
+            //            }
+            //            else ///this is the normal situation for when you press button and it is NOT a replay
+            //            {
             lyrics.remove(at: 0)
+            // }
         }
         else
         {
@@ -349,6 +429,13 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
         nextLyricsLbl.font = nextLyricsLbl.font?.withSize(CGFloat(selectedInfoTextSize))
     }
     
+    func hideResetButton()
+    {
+        resetButton.isHidden = true
+    }
     
-    
+    func showResetButton()
+    {
+        resetButton.isHidden = false
+    }
 }
