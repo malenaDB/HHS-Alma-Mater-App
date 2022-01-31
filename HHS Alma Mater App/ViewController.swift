@@ -148,8 +148,6 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate
         nextLyricsLbl.text = ""
     }
     
-    
-    
     @objc func counter()
     {
         timerTotal += 1
